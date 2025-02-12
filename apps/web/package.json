@@ -1,12 +1,14 @@
 {
-  "name": "web",
+  "name": "@pactus-wallet/web",
   "version": "0.1.0",
   "private": true,
+  "description": "Pactus web wallet",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:web": "next dev --turbopack"
   },
   "dependencies": {
     "next": "15.1.7",
