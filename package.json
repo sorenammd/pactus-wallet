@@ -13,10 +13,11 @@
   },
   "workspaces": {
     "packages": [
-      "pkg/*",
-      "app/*",
+      "packages/*",
+      "apps/*",
       "tests/*"
     ]
   },
-  "packageManager": "yarn@4.6.0"
+  "packageManager": "yarn@4.6.0",
+  "private": true
 }
