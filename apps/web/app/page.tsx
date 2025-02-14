@@ -1,101 +1,65 @@
+'use client'
 import Image from "next/image";
+import Link from "next/link";
+import { lazy, Suspense } from "react";
+import { motion } from "framer-motion";
+
+const LazySpline = lazy(() => import("@splinetool/react-spline"));
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="mt-[5rem] md:mt-[10rem] container mx-auto px-4">
+      <div className="grid md:grid-cols-2 grid-cols-1">
+        <div>
+          <h1 className="text-white font-bold md:text-5xl text-4xl">Welcome</h1>
+          <div className="block">
+            <span className="text-white font-bold md:text-5xl text-4xl">to</span>
+            <span className="font-bold md:text-5xl text-4xl bg-gradient-to-l to-[#40A9FF] from-[#7E46EF] inline-block text-transparent bg-clip-text ml-3">
+              Pactus Wallet
+            </span>
+          </div>
+          <div className="block mt-[5rem]">
+            <div className="flex">
+              <div className="w-[40px] h-[40px] relative"><Image src="/icons/Thunderbolt.svg" alt="Thunderbolt" priority fill/></div>
+              <div className="ml-[2rem] mt-1">
+                <p className="text-white text-xl font-bold">Lightning-fast Transactions</p>
+                <p className="text-white mt-3 text-lg">
+                  Thanks to the unique architecture of the Pactus blockchain, your transactions are processed and confirmed in no time.
+                </p>
+              </div>
+            </div>
+            <div className="flex mt-[3rem]">
+            <div className="w-[55px] h-[39px] relative"><Image src="/icons/Secure.svg" alt="Secure" priority fill/></div>
+              <div className="ml-[2rem] mt-1">
+                <p className="text-white text-xl font-bold">Unmatched Security</p>
+                <p className="text-white mt-3 text-lg">
+                  Pactus Wallet securely stores your private keys on your device. All transactions are executed through decentralized protocols, ensuring your assets never fall into the hands of centralized exchanges.
+                </p>
+              </div>
+            </div>
+            <div className="mt-[3rem] block">
+              <Link href="/add-wallet" className="block text-center bg-gradient-to-r from-[#7E46EF] to-[#40A9FF] hover:opacity-90 text-white font-bold py-2 px-4 rounded">Get Started</Link>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div>
+        <div className="relative lg:h-full lg:col-span-1 md:block hidden">
+            <Suspense>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 1 }}
+                >
+                  <LazySpline
+                    scene="https://prod.spline.design/mZBrYNcnoESGlTUG/scene.splinecode"
+                    className="absolute inset-0 w-full h-full origin-top-left flex items-center justify-center"
+                  />
+                  <div className="absolute bottom-0 right-0 bg-[#232323] w-[130px] h-[26px]" />
+                </motion.div>
+            </Suspense>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
