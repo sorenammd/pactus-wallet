@@ -36,10 +36,6 @@ jobs:
         run: npm run build
         working-directory: ./apps/web
 
-      - name: Export Next.js Static Site
-        run: npm run export
-        working-directory: ./apps/web
-
       - name: Push to "web" branch
         run: |
           COMMIT_ID=$(git rev-parse --short HEAD)
