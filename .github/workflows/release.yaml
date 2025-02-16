@@ -49,7 +49,7 @@ jobs:
           git rm -rf .
           mv apps/web/out/* .
           git add .
-          git commit -m "deploy Next.js web application based on $COMMIT_ID"
+          git commit -m "deploy Pactus web wallet based on $COMMIT_ID"
           git push -f origin web
 
   deploy:
