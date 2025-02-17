@@ -55,6 +55,6 @@ Thumbs.db
 **/public/locales/*
 **/src/wallet-translation/*
 
-
+# lock files
 package-lock.json
 yarn.lock
