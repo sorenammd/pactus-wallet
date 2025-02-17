@@ -36,22 +36,10 @@ jobs:
         run: npm run build
         working-directory: ./apps/web
 
-      - name: Push to "web" branch
-        run: |
-          COMMIT_ID=$(git rev-parse --short HEAD)
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout --orphan web
-          git rm -rf .
-          mv apps/web/out/* .
-          git add .
-          git commit -m "deploy Pactus web wallet based on $COMMIT_ID"
-          git push -f origin web
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: web
+          publish_dir: ./apps/web/out
+          cname: wallet.pactus.org
