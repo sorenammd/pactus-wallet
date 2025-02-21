@@ -4,12 +4,16 @@
 dist
 tmp
 /out-tsc
+/out
+out
 
 # dependencies
 node_modules
 
 # IDEs and editors
-/.idea
+.idea
+.vscode
+.code
 .project
 .classpath
 .c9/
@@ -51,5 +55,6 @@ Thumbs.db
 **/public/locales/*
 **/src/wallet-translation/*
 
-
+# lock files
 package-lock.json
+yarn.lock

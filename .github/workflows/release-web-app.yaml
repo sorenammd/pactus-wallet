@@ -1,0 +1,45 @@
+name: Deploy Web Wallet
+
+on:
+  push:
+    # TODO: after release stable we can build based on github tags
+    branches:
+      - main
+  workflow_dispatch:  
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./
+
+      - name: Build Next.js project
+        run: npm run build
+        working-directory: ./apps/web
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: web
+          publish_dir: ./apps/web/out
+          cname: wallet.pactus.org
