@@ -11,16 +11,16 @@ export default function Home() {
     <div className="mt-[5rem] md:mt-[10rem] container mx-auto px-4">
       <div className="grid md:grid-cols-2 grid-cols-1">
         <div>
-          <h1 className="text-white font-bold md:text-5xl text-4xl">Welcome</h1>
+          <h1 className="text-white font-bold md:text-5xl text-4xl">Hello!</h1>
           <div className="block">
-            <span className="text-white font-bold md:text-5xl text-4xl">to</span>
-            <span className="font-bold md:text-5xl text-4xl bg-gradient-to-l to-[#40A9FF] from-[#7E46EF] inline-block text-transparent bg-clip-text ml-3">
+            <span className="text-white font-bold md:text-5xl text-4xl">Welocme to</span>
+            <span className="font-bold md:text-5xl text-4xl bg-gradient-to-l to-[#0FEF9E] from-[#064560] inline-block text-transparent bg-clip-text ml-3">
               Pactus Wallet
             </span>
           </div>
           <div className="block mt-[5rem]">
             <div className="flex">
-              <div className="w-[40px] h-[40px] relative"><Image src="/icons/Thunderbolt.svg" alt="Thunderbolt" priority fill/></div>
+              <div className="w-[40px] h-[40px] relative"><Image src="/icons/thunderbolt.svg" alt="Thunderbolt" priority fill/></div>
               <div className="ml-[2rem] mt-1">
                 <p className="text-white text-xl font-bold">Lightning-fast Transactions</p>
                 <p className="text-white mt-3 text-lg">
@@ -29,7 +29,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex mt-[3rem]">
-            <div className="w-[55px] h-[39px] relative"><Image src="/icons/Secure.svg" alt="Secure" priority fill/></div>
+            <div className="w-[55px] h-[39px] relative"><Image src="/icons/secure.svg" alt="Secure" priority fill/></div>
               <div className="ml-[2rem] mt-1">
                 <p className="text-white text-xl font-bold">Unmatched Security</p>
                 <p className="text-white mt-3 text-lg">
