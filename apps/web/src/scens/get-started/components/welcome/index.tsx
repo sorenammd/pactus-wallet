@@ -1,9 +1,13 @@
+'use client'
+
 import Image from 'next/image';
 import React from 'react'
 import ThreeDMotion from '../3d-motion';
 import { openSourceIcon, secureIcon, simpleIcon } from '@/assets';
 import './style.css'
+import { useRouter } from 'next/navigation';
 const Welcome = () => {
+  const navigate = useRouter().push;
   const data = [
     { title: 'Open Source', icon: openSourceIcon, description: 'Pactus Wallet is fully open source, explore and contribute to our code [here](LINK).' },
     { title: 'Simple', icon: simpleIcon, description: 'Pactus Wallet is designed for everyone, from beginners to advanced users.' },
@@ -38,7 +42,7 @@ const Welcome = () => {
       <div className='letsCta-GetStarted' >
 
         <div><input type="checkbox" /><p>I have read and agreed to the <span className='gradient-GetStarted'> Terms and Conditions</span>.</p></div>
-        <button>Let’s Start</button>
+        <button onClick={() =>navigate('/get-started?step=add-wallet')} >Let’s Start</button>
       </div>
 
     </>)

@@ -1,4 +1,3 @@
-
 import Wallet from "@/scens/wallet";
 
 
