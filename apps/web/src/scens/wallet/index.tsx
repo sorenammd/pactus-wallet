@@ -1,7 +1,9 @@
+"use client"; 
+
 import React from 'react'
 import './style.css'
-const Wallet = ({walletId}) => {
-    console.log("🚀 ~ Wal ~ walletId:", walletId)
+const Wallet = () => {
+   
     return (
         <div>Wallet</div>
     )
