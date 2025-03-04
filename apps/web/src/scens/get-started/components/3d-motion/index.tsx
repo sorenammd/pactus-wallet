@@ -6,22 +6,22 @@ const LazySpline = lazy(() => import("@splinetool/react-spline"));
 
 const ThreeDMotion = () => {
     const [showSpline, setShowSpline] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
+
 
 
     useEffect(() => {
         // Don't show on mobile
-        if (!isMobile) {
-            const timer = setTimeout(() => {
-                setShowSpline(true);
-            }, 1000);
 
-            return () => clearTimeout(timer);
-        }
-    }, [isMobile]);
+        const timer = setTimeout(() => {
+            setShowSpline(true);
+        }, 1000);
+
+        return () => clearTimeout(timer);
+
+    }, []);
 
     return (
-        <div style={{ width: '400px', height: '400px', overflow: 'hidden' , position: 'relative'}} >
+        <div style={{ width: '400px', height: '400px', overflow: 'hidden', position: 'relative' }} >
 
 
             <Suspense>
@@ -30,7 +30,7 @@ const ThreeDMotion = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.8, delay: 1 }}
-                        style={{ width: '600px', height: '600px',position:'absolute' }}
+                        style={{ width: '600px', height: '600px', position: 'absolute' }}
                     >
                         <LazySpline
                             scene="https://prod.spline.design/mZBrYNcnoESGlTUG/scene.splinecode"

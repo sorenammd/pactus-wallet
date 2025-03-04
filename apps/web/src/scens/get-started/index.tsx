@@ -1,49 +1,45 @@
-import React from 'react'
-import './style.css'
-import ThreeDMotion from './components/3d-motion'
-import { openSourceIcon, secureIcon, simpleIcon } from '@/assets/get-starts';
-import Image from 'next/image';
-const GetStarted = () => {
+"use client";
 
-  const data = [
-    { title: 'Open Source', icon: openSourceIcon, description: 'Pactus Wallet is fully open source, explore and contribute to our code [here](LINK).' },
-    { title: 'Simple', icon: simpleIcon, description: 'Pactus Wallet is designed for everyone, from beginners to advanced users.' },
-    { title: 'Secure', icon: secureIcon, description: 'Pactus Wallet is a fully static wallet. There is no server involved and all data including \n your private keys are stored in your browser. ' },
-  ];
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState, Suspense, JSX } from 'react';
+import AddWallet from './components/add-wallet';
+import ChooseNameWallet from './components/choose-name-wallet';
+import ImportWallet from './components/import-wallet';
+import MasterPassword from './components/master-password';
+import RecoveryPhrase from './components/recovery-phrase';
+import Welcome from './components/welcome';
+import './style.css';
+
+const GetStartedContent = () => {
+  const searchParams = useSearchParams();
+  const [step, setStep] = useState<string | null>(null);
+
+  useEffect(() => {
+    setStep(searchParams.get('step'));
+  }, [searchParams]);
+
+  const stepsMap: Record<string, JSX.Element> = {
+    'welcome': <Welcome />,
+    'add-wallet': <AddWallet />,
+    'master-password': <MasterPassword />,
+    'import-wallet': <ImportWallet />,
+    'recovery-phrase': <RecoveryPhrase />,
+    'choose-name-wallet': <ChooseNameWallet />,
+  };
+
   return (
-    <div className='contianer-GetStarted' >
-      <div className='titer-GetStarted' >
-        <h1>
-          Hello!<br />
-          <span>Welcome to</span><span style={{ marginLeft: '5px' }} className='gradient-GetStarted' >Pactus Wallet</span>
-        </h1>
-      </div>
-
-      <div className='section1-GetStarted' >
-        <div className='slogans-GetStarted' >
-          {
-            data.map((item, i) => (<div key={`${i}-slogan`} >
-              <Image src={item.icon} alt='' />
-              <div>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </div>
-            </div>))
-          }
-        </div>
-        <div>
-          <ThreeDMotion />
-        </div>
-      </div>
-
-      <div className='letsCta-GetStarted' >
-
-        <div><input type="checkbox" /><p>I have read and agreed to the <span className='gradient-GetStarted'> Terms and Conditions</span>.</p></div>
-        <button>Let’s Start</button>
-      </div>
-
+    <div className='container-GetStarted'>
+      {stepsMap[step || 'welcome']}
     </div>
-  )
-}
+  );
+};
 
-export default GetStarted
+const GetStarted = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <GetStartedContent />
+    </Suspense>
+  );
+};
+
+export default GetStarted;

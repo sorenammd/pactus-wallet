@@ -1,8 +1,3 @@
-
-import { notFound, permanentRedirect } from "next/navigation";
-import { Metadata } from "next";
-import Script from "next/script";
-import { NextResponse } from "next/server";
 import Wallet from "@/scens/wallet";
 
 
@@ -11,6 +6,7 @@ const WalletPage = async (props: {
 }) => {
     const params = await props.params;
     const { walletId } = params;
+    console.log("🚀 ~ walletId:", walletId)
     return <Wallet walletId={walletId} />
 }
 
