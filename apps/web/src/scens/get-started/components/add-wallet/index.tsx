@@ -1,10 +1,11 @@
 'use client'
 import { addWalletLottie, existingWalletIcon, newWalletIcon } from '@/assets'
 import Image from 'next/image'
-import React  from 'react'
+import React from 'react'
 import './style.css'
 import dynamic from 'next/dynamic'
-const LottiePlayer = dynamic(() => import('@/components/lottie-player'), { ssr: false });
+
+const LottiePlayer = dynamic(() => import('react-lottie-player'), { ssr: false });
 
 
 const AddWallet = () => {
@@ -12,8 +13,12 @@ const AddWallet = () => {
 
     return (
         <div className='container-addwallet' >
-
-            <LottiePlayer endFrame={30} lottieFile={addWalletLottie} />
+            <LottiePlayer
+                segments={[0, 30]}
+                animationData={addWalletLottie}
+                loop={false}
+                play
+            />
             <h1>Add Wallet</h1>
             <p>Easily create a new wallet or import an existing one to manage your digital assets securely.</p>
             <div className='ctas-addwallet' >
