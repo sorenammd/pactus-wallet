@@ -1,4 +1,4 @@
 import copyIcon from './copy-icon.svg';
-import hiddenPasswordIcon from './hiddenPasswordIcon.svg';
+import hidePasswordIcon from './hidePasswordIcon.svg';
 import showPasswordIcon from './showPasswordIcon.svg';
-export { copyIcon, hiddenPasswordIcon, showPasswordIcon };
+export { copyIcon, hidePasswordIcon, showPasswordIcon };

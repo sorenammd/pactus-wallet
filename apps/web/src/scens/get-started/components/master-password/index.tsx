@@ -1,19 +1,56 @@
-import { masterPasswordIcon, showPasswordIcon } from '@/assets'
+import { masterPasswordIcon, showPasswordIcon, hidePasswordIcon } from '@/assets'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import './style.css'
-const MasterPassword = () => {
-    return (
 
-        <div className='container-MasterPassword' >
+const MasterPassword = () => {
+    const [showPassword, setShowPassword] = useState<boolean>(false)
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(prevState => !prevState)
+    }
+
+    return (
+        <div className='container-MasterPassword'>
             <Image src={masterPasswordIcon} alt='' />
             <h1>Create Master Password</h1>
             <p>Set a strong password to protect your wallet and keep your funds safe.</p>
-            <div className='input-MasterPassword' > <input type='text' /><button><Image src={showPasswordIcon} alt='' /></button> </div>
-            <div className='input-MasterPassword' > <input type='password' /><button><Image src={showPasswordIcon} alt='' /></button> </div>
-            <div className='terms-MasterPassword' ><input type="checkbox" /><p>I understand that Pactus cannot recover this password for me. <span className='gradient-MasterPassword'>Learn more </span></p></div>
 
-            <button className='cta-MasterPassword'  >Continue</button>
+            <div className='input-MasterPassword'>
+                <input 
+                    type={showPassword ? 'text' : 'password'} 
+                    placeholder="Enter your password"
+                />
+                <button onClick={togglePasswordVisibility}>
+                    <Image 
+                        src={showPassword ? hidePasswordIcon : showPasswordIcon} 
+                        alt={showPassword ? 'Hide password' : 'Show password'} 
+                    />
+                </button>
+            </div>
+
+            <div className='input-MasterPassword'>
+                <input 
+                    type={showPassword ? 'text' : 'password'} 
+                    placeholder="Confirm your password"
+                />
+                <button onClick={togglePasswordVisibility}>
+                    <Image 
+                        src={showPassword ? hidePasswordIcon : showPasswordIcon} 
+                        alt={showPassword ? 'Hide password' : 'Show password'} 
+                    />
+                </button>
+            </div>
+
+            <div className='terms-MasterPassword'>
+                <input type="checkbox" />
+                <p>
+                    I understand that Pactus cannot recover this password for me. 
+                    <span className='gradient-MasterPassword'>Learn more</span>
+                </p>
+            </div>
+
+            <button className='cta-MasterPassword'>Continue</button>
         </div>
     )
 }
