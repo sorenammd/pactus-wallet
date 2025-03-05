@@ -2,7 +2,6 @@ import { ceedRecoveryPhrase, copyIcon, recoveryPhrase } from '@/assets'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import './style.css'
-import { s } from 'framer-motion/client'
 const RecoveryPhrase = () => {
     const [step, setStep] = useState(1);
     const [wordCount, setWordCount] = useState(24);
