@@ -68,4 +68,6 @@
     max-width: 900px;
     margin-bottom: 29px;
     font-size: 25px;
+    display: flex;
+    flex-wrap: wrap;
 }
