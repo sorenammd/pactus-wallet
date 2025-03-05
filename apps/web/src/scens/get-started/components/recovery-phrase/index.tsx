@@ -31,7 +31,7 @@ const RecoveryPhrase = () => {
                 <div className='hint-RecoveryPhrase' style={{ gap: '10px' }} >
                     <Image src={ceedRecoveryPhrase} alt='recovery-phrase' />
                     <h1>Recovery Phrase</h1>
-                    <p>Write down the following 12 words in the correct order and keep them in a safe place.</p>
+                    <p>Write down the following {wordCount} words in the correct order and keep them in a safe place.</p>
                     <select defaultValue={24} onChange={(e) => setWordCount(parseInt(e.target.value))} >
                         <option value={12} >12 Words</option>
                         <option value={24}>24 Words</option>
