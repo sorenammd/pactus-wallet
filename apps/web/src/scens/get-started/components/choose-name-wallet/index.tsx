@@ -27,7 +27,7 @@ const ChooseNameWallet = () => {
 
             </div>
             <div className='emoji-ChooseNameWallet' >
-                {emojis.map((emoji, index) => (<>{emoji}</>))}
+                {emojis.map((emoji, index) => (<button key={`${index}-emoji`} >{emoji}</button>))}
             </div>
             <button className='cta-ChooseNameWallet'  >Finish</button>
         </div>
