@@ -20,7 +20,7 @@ export default function GuardProvider({ children }: { children: ReactNode }) {
         if (walletExists && window.location.pathname === '/get-started') {
             router.replace('/');
         }
-    }, []);
+    });
 
     return (
         <GuardContext.Provider value={{ hasWallet, setHasWallet }}>

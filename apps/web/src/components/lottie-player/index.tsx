@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect, useRef } from 'react'
 import { AnimationItem } from 'lottie-web'
 import Lottie from 'react-lottie-player'
@@ -22,7 +23,7 @@ const LottiePlayer = ({lottieFile,endFrame}:{lottieFile:object ,endFrame:number}
                 currentLottie.removeEventListener('enterFrame', handleEnterFrame);
             }
         };
-    }, []);
+    });
 
     return (
         <Lottie

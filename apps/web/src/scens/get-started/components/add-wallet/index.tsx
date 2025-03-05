@@ -1,9 +1,11 @@
 'use client'
 import { addWalletLottie, existingWalletIcon, newWalletIcon } from '@/assets'
 import Image from 'next/image'
-import React, { useEffect, useRef, useState } from 'react'
+import React  from 'react'
 import './style.css'
-import LottiePlayer from '@/components/lottie-player'
+import dynamic from 'next/dynamic'
+const LottiePlayer = dynamic(() => import('@/components/lottie-player'), { ssr: false });
+
 
 const AddWallet = () => {
 
