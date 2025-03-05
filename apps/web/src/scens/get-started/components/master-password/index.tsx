@@ -2,8 +2,11 @@ import { masterPasswordIcon, showPasswordIcon, hidePasswordIcon } from '@/assets
 import Image from 'next/image'
 import React, { useState } from 'react'
 import './style.css'
+import { useRouter } from 'next/navigation'
 
 const MasterPassword = () => {
+      const navigate = useRouter().push;
+    
     const [showPassword, setShowPassword] = useState<boolean>(false)
 
     const togglePasswordVisibility = () => {
@@ -50,7 +53,7 @@ const MasterPassword = () => {
                 </p>
             </div>
 
-            <button className='cta-MasterPassword'>Continue</button>
+            <button className='cta-MasterPassword' onClick={() =>navigate('/get-started?step=choose-name-wallet')} >Continue</button>
         </div>
     )
 }
