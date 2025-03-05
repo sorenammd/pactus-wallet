@@ -48,7 +48,9 @@
     box-shadow: -20px -26px 95px -48px rgba(39, 202, 63, 0.452);
 
 }
-
+.ctas-addwallet button:disabled{
+    opacity: .5;
+}
 .ctas-addwallet button h3 {
     color: #FFF;
     font-size: 20px;

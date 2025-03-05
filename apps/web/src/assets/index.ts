@@ -1,3 +1,4 @@
-export * from "./get-starts";
+export * from "./get-started";
 export * from "./branding";
 export * from "./lottie-files";
+export * from "./icons";
