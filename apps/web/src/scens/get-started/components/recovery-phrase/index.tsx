@@ -54,7 +54,6 @@ const RecoveryPhrase = () => {
                     <div className='ceeds-RecoveryPhrase' >
                         {walletCeeds.slice(0, wordCount).map((word, index) => <span key={index} >{index + 1}. {word}</span>)}
                     </div>
-                    <button className='copyCeeds-RecoveryPhrase' ><Image src={copyIcon} alt='' />Copy to clipboard</button>
                     <button className='cta-RecoveryPhrase' onClick={() => navigate('/get-started?step=master-password')} >Continue</button>
                 </div>
             }
