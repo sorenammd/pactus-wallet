@@ -2,10 +2,12 @@ import { ceedRecoveryPhrase, copyIcon, recoveryPhrase } from '@/assets'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import './style.css'
+import { useRouter } from 'next/navigation'
 const RecoveryPhrase = () => {
     const [step, setStep] = useState(1);
     const [wordCount, setWordCount] = useState(24);
-
+    const navigate = useRouter().push;
+//  step 1 ==> hint users , step 2 ==> generate ceeds , step 3 ==> validate ceeds  
     const walletCeeds = [
         'mango', 'nectarine', 'orange', 'papaya', 'quince', 'raspberry',
         'strawberry', 'tangerine', 'ugli', 'vanilla', 'watermelon', 'xigua',
@@ -39,7 +41,21 @@ const RecoveryPhrase = () => {
                         {walletCeeds.slice(0, wordCount).map((word, index) => <span key={index} >{index + 1}. {word}</span>)}
                     </div>
                     <button className='copyCeeds-RecoveryPhrase' ><Image src={copyIcon} alt='' />Copy to clipboard</button>
-                    <button className='cta-RecoveryPhrase' onClick={() => setStep(2)} >Continue</button>
+                    <button className='cta-RecoveryPhrase' onClick={() => setStep(3)} >Continue</button>
+                </div>
+            }
+
+            {
+                step === 3 &&
+                <div className='hint-RecoveryPhrase' style={{ gap: '10px' }} >
+                    <Image src={ceedRecoveryPhrase} alt='recovery-phrase' />
+                    <h1>Confirm Recovery Phrase</h1>
+                    <p>Enter the words in the correct order to verify your backup and ensure you’ve written it down correctly.</p>
+                    <div className='ceeds-RecoveryPhrase' >
+                        {walletCeeds.slice(0, wordCount).map((word, index) => <span key={index} >{index + 1}. {word}</span>)}
+                    </div>
+                    <button className='copyCeeds-RecoveryPhrase' ><Image src={copyIcon} alt='' />Copy to clipboard</button>
+                    <button className='cta-RecoveryPhrase' onClick={() => navigate('/get-started?step=master-password')} >Continue</button>
                 </div>
             }
         </div>
