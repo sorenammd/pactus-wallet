@@ -16,7 +16,6 @@ describe('Pactus Wallet Tests', () => {
 
             // Get and validate the mnemonic
             const mnemonic = wallet.getMnemonic();
-            console.log('mnemonic', mnemonic);
             expect(mnemonic).toBeTruthy();
             expect(wallet.getMnemonicWordCount()).toBe(12);
 
@@ -33,7 +32,6 @@ describe('Pactus Wallet Tests', () => {
 
             // Get and validate the mnemonic
             const mnemonic = wallet.getMnemonic();
-            console.log('mnemonic', mnemonic);
             expect(mnemonic).toBeTruthy();
             expect(wallet.getMnemonicWordCount()).toBe(24);
 
@@ -47,7 +45,6 @@ describe('Pactus Wallet Tests', () => {
             // First create a wallet to get a valid mnemonic
             const originalWallet = Wallet.create(core, MnemonicStrength.Normal, 'test-password');
             const mnemonic = originalWallet.getMnemonic();
-            console.log('mnemonic', mnemonic);
             // Restore wallet using the mnemonic
             const restoredWallet = Wallet.restore(core, mnemonic, 'new-password');
             // Verify the restored wallet has the correct mnemonic
@@ -58,7 +55,6 @@ describe('Pactus Wallet Tests', () => {
         it('should throw error when restoring with invalid mnemonic', async () => {
             // Invalid mnemonic (random words)
             const invalidMnemonic = 'invalid mnemonic phrase that will not work for restoration';
-            console.log('invalidMnemonic', invalidMnemonic);
             // Attempt to restore with invalid mnemonic should throw
             expect(() => {
                 Wallet.restore(core, invalidMnemonic, 'test-password');
@@ -72,9 +68,7 @@ describe('Pactus Wallet Tests', () => {
 
             // Create two addresses
             const address1 = wallet.createAddress('Address 1');
-            console.log('address1', address1);
             const address2 = wallet.createAddress('Address 2');
-            console.log('address2', address2);
 
             // Verify addresses were created with correct format
             expect(address1).toBeTruthy();
@@ -85,7 +79,6 @@ describe('Pactus Wallet Tests', () => {
 
             // Verify address info is stored correctly
             const addresses = wallet.getAddresses();
-            console.log('addresses', addresses);
             expect(addresses.length).toBe(2);
             expect(addresses[0].address).toBe(address1);
             expect(addresses[0].label).toBe('Address 1');
@@ -104,14 +97,12 @@ describe('Pactus Wallet Tests', () => {
 
             // Use legacy method
             const address = wallet.createAddress('Legacy Method');
-            console.log('address', address);
             // Verify address was created correctly
             expect(address).toBeTruthy();
             expect(address.startsWith('pc1')).toBe(true);
 
             // Verify address info is stored correctly
             const addresses = wallet.getAddresses();
-            console.log('addresses', addresses);
             expect(addresses.length).toBe(1);
             expect(addresses[0].address).toBe(address);
             expect(addresses[0].label).toBe('Legacy Method');
@@ -122,12 +113,9 @@ describe('Pactus Wallet Tests', () => {
         it('should store public keys with addresses', () => {
             const wallet = Wallet.create(core, MnemonicStrength.Normal, 'test-password');
             const address = wallet.createAddress('Test Address');
-            console.log('address', address);
             // Get the addresses
             const addresses = wallet.getAddresses();
-            console.log('addresses', addresses);
             const addressObj = addresses.find(a => a.address === address);
-            console.log('addressObj', addressObj);
             // Verify public key is present and in hex format
             expect(addressObj).toBeTruthy();
             expect(addressObj?.publicKey).toBeTruthy();
