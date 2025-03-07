@@ -15,8 +15,9 @@
         "isolatedModules": true,
         "noEmit": false,
         "outDir": "dist",
-        "declaration": true
+        "declaration": true,
+        "types": ["jest", "node"]
     },
-    "include": ["src"],
+    "include": ["src", "test"],
     "exclude": ["node_modules", "**/stories"]
 }

@@ -6,9 +6,17 @@
     "scripts": {
         "build": "rm -fr dist && tsc",
         "start": "tsc -w",
-        "build:pkg": "yarn build"
+        "build:pkg": "yarn build",
+        "test": "jest --forceExit --detectOpenHandles",
+        "test:watch": "jest --watch --forceExit --detectOpenHandles"
     },
     "dependencies": {
-        "@trustwallet/wallet-core": "^4.2.10"
+        "@trustwallet/wallet-core": "^4.2"
+    },
+    "devDependencies": {
+        "@types/jest": "^29.5",
+        "jest": "^29.7",
+        "ts-jest": "^29.1",
+        "typescript": "^5.7"
     }
 }
