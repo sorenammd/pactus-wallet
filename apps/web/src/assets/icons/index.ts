@@ -10,9 +10,10 @@ import overviewIcon from './overview-icon.svg';
 import activityIcon from './activity-icon.svg';
 import documentationIcon from './documentation-icon.svg';
 import FAQsIcon from './FAQs-icon.svg';
-import gradiantCopyIcon from './gradiant-copy-icon.svg';
+import gradientCopyIcon from './gradient-copy-icon.svg';
 import ReportIcon from './Report-icon.svg';
 import settingsIcon from './settings-icon.svg';
+import gradientArrowToRightIcon from './gradient-arrow-toRight-icon.svg';
 export {
     copyIcon,
     hidePasswordIcon,
@@ -26,7 +27,8 @@ export {
     activityIcon,
     documentationIcon,
     FAQsIcon,
-    gradiantCopyIcon,
+    gradientCopyIcon,
     ReportIcon,
-    settingsIcon
+    settingsIcon,
+    gradientArrowToRightIcon
 };

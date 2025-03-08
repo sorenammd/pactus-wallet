@@ -7,6 +7,8 @@ import {
     activityIcon,
     documentationIcon,
     FAQsIcon,
+    gradientArrowToRightIcon,
+    gradientCopyIcon,
     lockIcon,
     overviewIcon,
     plusIcon,
@@ -105,6 +107,15 @@ const Sidebar = () => {
                 <Image src={ReportIcon} alt="report-icon" />
                 <h3>Report Bug</h3>
             </button>
+
+            <div className='Contributing-sidebar' >
+                <Image src={gradientCopyIcon} alt='gradientCopyIcon' />
+                <div>
+                    <h4>Contributing</h4>
+                    <p>You can contribute to the Pactus wallet project at any time.</p>
+                    <button>Join<Image src={gradientArrowToRightIcon} alt='gradientArrowToRightIcon' /> </button>
+                </div>
+            </div>
         </div>
     );
 };
