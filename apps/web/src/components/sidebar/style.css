@@ -46,7 +46,6 @@
 .addAccount-sidebar>button {
     display: flex;
     align-items: center;
-    gap: 9px;
     border-radius: 4px;
     border: 1px solid #414144;
     background: #15191C;
@@ -58,10 +57,104 @@
     font-weight: 500;
     line-height: normal;
     text-wrap: no-wrap;
+    position: relative;
+    gap: 9px;
 }
 
 .addAccount-sidebar :first-child {
-    padding: 2px 10px;
     justify-content: flex-start;
+    width: calc(100% - 45px);
 
+}
+
+.addAccount-sidebar :first-child>img {
+    object-fit: scale-down;
+    max-width: 15px;
+}
+
+.addAccount-sidebar> :last-child {
+    width: 38px;
+    height: 38px;
+}
+
+.accountList-sidebar {
+    margin-top: 20px;
+}
+
+.addAccount-sidebar> :last-child>img {
+    object-fit: scale-down;
+    width: 16px;
+    height: 16px;
+}
+
+
+
+.accountList-sidebar> :last-child {
+    display: flex;
+    padding-left: 14px;
+}
+
+.accountList-sidebar hr {
+    background: #525252;
+    border: none;
+    width: 1px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.accountItems-sidebar {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.accountItems-sidebar>div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.accountItems-sidebar span {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.accountItems-sidebar p {
+    color: #D2D3E0;
+    font-family: Inter;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.route-sidebar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 20px;
+    gap: 10px;
+    width: 100%;
+    padding: 5.5px 10px 5.5px 7px;
+    gap: 10px;
+    border-radius: 4px;
+}
+
+.route-sidebar h3 {
+    color: #D2D3E0;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+}
+
+.activeRoute-sidebar {
+
+    background: #15191C;
 }

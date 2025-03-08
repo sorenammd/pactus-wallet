@@ -1,0 +1,11 @@
+.container-activity {
+    display: flex;
+    width: 100%;
+    min-height: 100dvh;
+}
+
+.content-activity {
+    width: calc(100% - 219px);
+    display: flex;
+    flex-direction: column;
+}

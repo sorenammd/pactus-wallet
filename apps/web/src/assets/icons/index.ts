@@ -6,4 +6,27 @@ import exportWalletIcon from './export-wallet-icon.svg';
 import lockIcon from './lock-icon.svg';
 import searchIcon from './search-icon.svg';
 import plusIcon from './plus-icon.svg';
-export { copyIcon, hidePasswordIcon, showPasswordIcon,logoutIcon ,exportWalletIcon,lockIcon,searchIcon,plusIcon};
+import overviewIcon from './overview-icon.svg';
+import activityIcon from './activity-icon.svg';
+import documentationIcon from './documentation-icon.svg';
+import FAQsIcon from './FAQs-icon.svg';
+import gradiantCopyIcon from './gradiant-copy-icon.svg';
+import ReportIcon from './Report-icon.svg';
+import settingsIcon from './settings-icon.svg';
+export {
+    copyIcon,
+    hidePasswordIcon,
+    showPasswordIcon,
+    logoutIcon,
+    exportWalletIcon,
+    lockIcon,
+    searchIcon,
+    plusIcon,
+    overviewIcon,
+    activityIcon,
+    documentationIcon,
+    FAQsIcon,
+    gradiantCopyIcon,
+    ReportIcon,
+    settingsIcon
+};
