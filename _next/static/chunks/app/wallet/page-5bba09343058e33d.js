@@ -1,1 +1,0 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[730],{721:(e,s,l)=>{"use strict";l.d(s,{default:()=>r});var a=l(4568);l(7620),l(929);let r=()=>(0,a.jsx)("div",{children:"Wallet"})},929:()=>{},3427:(e,s,l)=>{Promise.resolve().then(l.bind(l,721))}},e=>{var s=s=>e(e.s=s);e.O(0,[292,587,84,358],()=>s(3427)),_N_E=e.O()}]);
