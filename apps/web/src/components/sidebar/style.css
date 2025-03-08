@@ -1,0 +1,67 @@
+.sidebarContainer {
+    display: flex;
+    flex-direction: column;
+    width: 219px;
+    min-height: 100dvh;
+    padding: 25px 15px;
+    background: #1D2328;
+}
+
+.walletName-sidebar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+}
+
+.walletName-sidebar>span {
+    display: flex;
+    padding: 2px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    background: #CA6534;
+    margin-right: 8px;
+}
+
+.walletName-sidebar>h2 {
+    color: #D2D3E0;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.walletName-sidebar>img {
+    margin-left: auto;
+}
+
+.addAccount-sidebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.addAccount-sidebar>button {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    border-radius: 4px;
+    border: 1px solid #414144;
+    background: #15191C;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+    color: #D2D3E0;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-wrap: no-wrap;
+}
+
+.addAccount-sidebar :first-child {
+    padding: 2px 10px;
+    justify-content: flex-start;
+
+}
