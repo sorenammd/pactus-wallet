@@ -2,7 +2,7 @@
 import React from 'react';
 import './style.css';
 import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import {
     activityIcon,
     documentationIcon,
@@ -20,23 +20,37 @@ import {
 
 const Sidebar = () => {
     const pathname = usePathname();
+    const searchParams = useSearchParams();
     const navigate = useRouter().push;
     const accountList = [
         {
             name: 'Account 1',
             balance: '0.00',
-            address: '0x',
+            address: '0x2',
             emoji: '😀'
         },
         {
             name: 'Account 2',
             balance: '0.00',
-            address: '0x',
+            address: '0x1',
             emoji: '😁'
         }
     ];
+    const parseRoute = (route: string) => {
+        const [path, queryString] = route.split('?');
+        const queryParams = new URLSearchParams(queryString);
+        return { path, queryParams };
+    };
 
-    const isActiveRoute = (route: string) => pathname === route;
+    const isActiveRoute = (route: string) => {
+        const { path, queryParams } = parseRoute(route);
+        if (pathname !== path) return false;
+        for (const [key, value] of queryParams) {
+            if (searchParams.get(key) !== value) return false;
+        }
+        return true;
+    };
+
 
     return (
         <div className="sidebarContainer">
@@ -66,7 +80,7 @@ const Sidebar = () => {
                     <hr />
                     <div className="accountItems-sidebar">
                         {accountList.map((item, i) => (
-                            <button key={`${i}-account`}>
+                            <button style={{background:isActiveRoute(`/wallet?walletId=${item?.address}`)?'#15191C':'none'}} onClick={()=>navigate(`/wallet?walletId=${item?.address}`)} key={`${i}-account`}>
                                 <span>{item.emoji}</span>
                                 <p>{item.name}</p>
                             </button>

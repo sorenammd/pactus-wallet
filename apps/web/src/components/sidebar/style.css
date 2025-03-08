@@ -110,10 +110,12 @@
     margin: 10px 0;
 }
 
-.accountItems-sidebar>div {
+.accountItems-sidebar>button {
     display: flex;
     align-items: center;
     gap: 5px;
+    border-radius: 4px;
+    padding: 5px;
 }
 
 .accountItems-sidebar span {
@@ -171,12 +173,14 @@
     gap: 5px;
     margin-top: 25px;
 }
-.Contributing-sidebar >div{
+
+.Contributing-sidebar>div {
     display: flex;
     gap: 10px;
     flex-direction: column;
 
 }
+
 .Contributing-sidebar h4 {
     color: #EEEFFC;
     font-size: 12px;
