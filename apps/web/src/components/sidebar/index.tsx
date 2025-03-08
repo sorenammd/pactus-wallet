@@ -27,7 +27,7 @@ const Sidebar = () => {
             name: 'Account 1',
             balance: '0.00',
             address: '0x2',
-            emoji: '😀'
+            emoji: '🤝'
         },
         {
             name: 'Account 2',

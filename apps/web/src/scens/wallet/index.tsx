@@ -11,7 +11,7 @@ const Wallet = () => {
             <div className='container-wallet' >
                 <Sidebar />
                 <div className='content-wallet'>
-                    <Header title='Overview' />
+                    <Header title='🤝 Account 1' />
 
                 </div>
             </div>
