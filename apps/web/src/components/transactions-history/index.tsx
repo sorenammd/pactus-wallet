@@ -1,5 +1,5 @@
-import React from 'react'
-import './style.css'
+import React from 'react';
+import './style.css';
 
 interface Transaction {
     date: string;
@@ -15,31 +15,29 @@ interface TransactionsHistoryProps {
 }
 
 const TransactionsHistory: React.FC<TransactionsHistoryProps> = ({ transactions }) => {
-    const headings = ['Date', 'TX Hash', 'Sender', 'Receiver', 'Amount', 'Fee']
-    
-    return (
-        <div className='container-TransactionsHistory'>
-        <table >
-            <thead>
-                <tr>
-                    {headings.map((item, i) => (<th key={i}>{item}</th>))}
-                </tr>
-            </thead>
-            <tbody>
-                {transactions.map((transaction, i) => (
-                    <tr key={i}>
-                        <td>{transaction.date}</td>
-                        <td className='gradientTxHash-TransactionsHistory' >{transaction.txHash}</td>
-                        <td>{transaction.sender}</td>
-                        <td>{transaction.receiver}</td>
-                        <td>{transaction.amount}</td>
-                        <td>{transaction.fee}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
-        </div>
-    )
-}
+    const headings = ['Date', 'TX Hash', 'Sender', 'Receiver', 'Amount', 'Fee'];
 
-export default TransactionsHistory
+    return (
+        <div className="container-TransactionsHistory">
+            <div className="grid-header">
+                {headings.map((item, i) => (
+                    <div key={i} className="grid-header-cell">{item}</div>
+                ))}
+            </div>
+            <div className="grid-body">
+                {transactions.map((transaction, i) => (
+                    <div key={i} className="grid-row">
+                        <div className="grid-cell">{transaction.date}</div>
+                        <div className="grid-cell gradientTxHash-TransactionsHistory">{transaction.txHash}</div>
+                        <div className="grid-cell">{transaction.sender}</div>
+                        <div className="grid-cell">{transaction.receiver}</div>
+                        <div className="grid-cell">{transaction.amount}</div>
+                        <div className="grid-cell">{transaction.fee}</div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+export default TransactionsHistory;

@@ -4,31 +4,50 @@
     background: #15191C;
     padding: 16px 21px;
     max-height: 400px;
-    overflow: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
-.container-TransactionsHistory table {
-    width: 100%;
-    border-spacing: 20px;
+.grid-header {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); 
+    position: sticky; 
+    top: 0; 
+    background: #15191C;
+    z-index: 1; 
+    padding-bottom: 10px; 
 }
-.container-TransactionsHistory th {
+
+.grid-header-cell {
     color: #858699;
-    text-align: left;
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    max-width: 100px;
+    padding: 10px;
+    text-align: left;
 }
 
+.grid-body {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); 
+    overflow-y: auto; 
+    max-height: calc(400px - 40px); 
+}
 
-.container-TransactionsHistory td {
+.grid-row {
+    display: contents;
+}
+
+.grid-cell {
     color: #FFF;
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    max-width: 100px;
+    padding: 10px;
+    border-bottom: 1px solid #333;
 }
 
 .gradientTxHash-TransactionsHistory {
