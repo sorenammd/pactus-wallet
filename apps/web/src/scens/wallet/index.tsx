@@ -9,7 +9,6 @@ import TransactionsHistory from '@/components/transactions-history';
 import { searchIcon, simpleLogo, transactions } from '@/assets';
 import RefetchBalance from '@/components/refetch-balance';
 import SendPac from '@/components/send-pac';
-import ReceivePac from '@/components/receive-pac';
 import BridgePac from '@/components/bridge-pac';
 const Wallet = () => {
 
