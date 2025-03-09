@@ -32,6 +32,10 @@ describe('Encrypter Params', () => {
         expect(p.getBytes('k1')).toStrictEqual(new Uint8Array([0, 0]));
         expect(p.getBytes('k2')).toStrictEqual(new Uint8Array([0xFF, 0xFF]));
         expect(p.getBytes('k3')).toStrictEqual(new Uint8Array([]));
+
+        expect(p.getString('k1')).toBe("AAA=");
+        expect(p.getString('k2')).toBe("//8=");
+        expect(p.getString('k3')).toBe("");
     });
 
     it('should handle byte strings', () => {
