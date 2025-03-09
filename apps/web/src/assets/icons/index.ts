@@ -14,6 +14,10 @@ import gradientCopyIcon from './gradient-copy-icon.svg';
 import ReportIcon from './Report-icon.svg';
 import settingsIcon from './settings-icon.svg';
 import gradientArrowToRightIcon from './gradient-arrow-toRight-icon.svg';
+import RefetchBalanceIcon from './refetch-balance-icon.svg';
+import sendIcon from './send-icon.svg';
+import receiveIcon from './receive-icon.svg';
+import bridgeIcon from './bridge-icon.svg';
 export {
     copyIcon,
     hidePasswordIcon,
@@ -30,5 +34,9 @@ export {
     gradientCopyIcon,
     ReportIcon,
     settingsIcon,
-    gradientArrowToRightIcon
+    gradientArrowToRightIcon,
+    RefetchBalanceIcon,
+    sendIcon,
+    receiveIcon,
+    bridgeIcon
 };

@@ -8,4 +8,5 @@
     width: calc(100% - 219px);
     display: flex;
     flex-direction: column;
+    margin-left: auto;
 }

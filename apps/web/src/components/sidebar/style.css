@@ -5,6 +5,7 @@
     min-height: 100dvh;
     padding: 25px 15px;
     background: #1D2328;
+    position: fixed;
 }
 
 .walletName-sidebar {

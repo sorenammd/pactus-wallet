@@ -1,0 +1,39 @@
+.container-TransactionsHistory {
+    width: 100%;
+    border-radius: 8px;
+    background: #15191C;
+    padding: 16px 21px;
+    max-height: 400px;
+    overflow: auto;
+}
+
+.container-TransactionsHistory table {
+    width: 100%;
+    border-spacing: 20px;
+}
+.container-TransactionsHistory th {
+    color: #858699;
+    text-align: left;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    max-width: 100px;
+}
+
+
+.container-TransactionsHistory td {
+    color: #FFF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    max-width: 100px;
+}
+
+.gradientTxHash-TransactionsHistory {
+    background: var(--Ocean, linear-gradient(91deg, #0FEF9E -0.23%, #064560 105.78%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
