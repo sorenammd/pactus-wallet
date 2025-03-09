@@ -5,207 +5,14 @@ import Header from '@/components/header'
 import Sidebar from '@/components/sidebar'
 import RefetchBalance from '@/components/refetch-balance';
 import Image from 'next/image';
-import { comingSoonChart, searchIcon, simpleLogo } from '@/assets';
+import { comingSoonChart, searchIcon, simpleLogo, transactions } from '@/assets';
 import SendPac from '@/components/send-pac';
 import ReceivePac from '@/components/receive-pac';
 import BridgePac from '@/components/bridge-pac';
 import TransactionsHistory from '@/components/transactions-history';
 
 const Dashboard = () => {
-  const transactions = [
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...d5xcb59a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "Account 2",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-    {
-      date: "2025 FEB 23 - 03:12:00",
-      txHash: "9c459f56824fec...cb0a9d559a74b09",
-      sender: "Account 1",
-      receiver: "pc1zdfresqfw...4twev6zj8j8*8zv",
-      amount: "544.935470060 PAC",
-      fee: "0.010000 PAC"
-    },
-  ];
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div className='container-dashboard' >
@@ -243,10 +50,10 @@ const Dashboard = () => {
               <div className='searchTransactions-dashboard' >
                 <Image src={searchIcon} alt='search-icon' /><input placeholder='Search by tx hash or address' />
               </div>
-              <div className='filterTransactions-dashboard'><button>1D</button><button>7D</button><button>All</button></div></div>
+              <div className='filterTransactions-dashboard'><button>1D</button><button>7D</button><button style={{color:'#FFF'}} >All</button></div></div>
             <hr />
             <div className='transactions-dashboard' >
-              <TransactionsHistory transactions={transactions} />
+              <TransactionsHistory transactions={transactions} height={'400px'} />
             </div>
 
           </div>
