@@ -37,9 +37,11 @@ describe('Encrypter Params', () => {
     it('should handle byte strings', () => {
         const p = new Params();
 
-        p.setString('k4', 'foo');
-        p.setString('k5', 'bar');
-        expect(p.getString('k4')).toBe('foo');
-        expect(p.getString('k5')).toBe('bar');
+        p.setString('k1', 'foo');
+        p.setString('k2', 'bar');
+        p.setString('k3', '');
+        expect(p.getString('k1')).toBe('foo');
+        expect(p.getString('k2')).toBe('bar');
+        expect(p.getString('k3')).toBe('');
     });
 });
