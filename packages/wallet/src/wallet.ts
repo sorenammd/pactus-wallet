@@ -1,5 +1,6 @@
 import { WalletCore } from '@trustwallet/wallet-core';
 import { HDWallet } from '@trustwallet/wallet-core/dist/src/wallet-core';
+import { WalletRestoreError } from './error';
 
 /**
  * Network type for wallet operation
@@ -35,6 +36,9 @@ export interface Address {
  * Used for exporting/importing wallet data
  */
 export interface WalletData {
+    version: string; // Wallet data version
+    uuid: string; // Unique identifier for this wallet
+    creation_time: number; // Timestamp of wallet creation
     mnemonic?: string; // Optional mnemonic (included only during secure exports)
     addresses: Array<Address>; // List of addresses
     nextEd25519Index: number; // Next index to use for address generation
@@ -126,7 +130,7 @@ export class Wallet {
             const wallet = core.HDWallet.createWithMnemonic(mnemonic, '');
             return new Wallet(core, wallet, password, network, name);
         } catch (error) {
-            throw new Error(
+            throw new WalletRestoreError(
                 `Failed to restore wallet: ${
                     error instanceof Error ? error.message : 'Unknown error'
                 }`
@@ -237,7 +241,13 @@ export class Wallet {
      * @returns WalletData object ready for serialization
      */
     export(): WalletData {
+        // Generate a UUID if needed
+        const uuid = crypto.randomUUID ? crypto.randomUUID() : this.generateUUID();
+
         return {
+            version: '1.0',
+            uuid: uuid,
+            creation_time: this.createdAt.getTime(),
             mnemonic: this.getMnemonic(),
             addresses: this.addresses,
             nextEd25519Index: this.nextEd25519Index,
@@ -247,15 +257,48 @@ export class Wallet {
     }
 
     /**
+     * Generate a simple UUID
+     * Fallback method when crypto.randomUUID is not available
+     * @returns A UUID v4 string
+     */
+    private generateUUID(): string {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            const r = (Math.random() * 16) | 0;
+            const v = c === 'x' ? r : (r & 0x3) | 0x8;
+            return v.toString(16);
+        });
+    }
+
+    /**
      * Import wallet data from storage
      * @param data WalletData object from storage
      */
     import(data: WalletData): void {
+        // Preserve the next index from imported data
         this.nextEd25519Index = data.nextEd25519Index;
-        this.addresses = [...data.addresses];
+
+        // Clear existing addresses to prevent duplicates
+        this.addresses = [];
+
+        // Optionally, import existing addresses if needed
+        if (data.addresses && data.addresses.length > 0) {
+            // Directly assign the imported addresses
+            this.addresses = data.addresses.map(addr => ({
+                ...addr,
+                // Ensure all required properties are present
+                path: addr.path || '',
+                address: addr.address || '',
+                label: addr.label || '',
+                publicKey: addr.publicKey || ''
+            }));
+        }
+
+        // Update network if provided
         if (data.network) {
             this.network = data.network;
         }
+
+        // Update name if provided
         if (data.name) {
             this.name = data.name;
         }
