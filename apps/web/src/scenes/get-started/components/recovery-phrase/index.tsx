@@ -7,7 +7,7 @@ const RecoveryPhrase = () => {
     const [step, setStep] = useState(1);
     const [wordCount, setWordCount] = useState(24);
     const navigate = useRouter().push;
-//  step 1 ==> hint users , step 2 ==> generate ceeds , step 3 ==> validate ceeds  
+    //  step 1 ==> hint users , step 2 ==> generate ceeds , step 3 ==> validate ceeds  
     const walletCeeds = [
         'mango', 'nectarine', 'orange', 'papaya', 'quince', 'raspberry',
         'strawberry', 'tangerine', 'ugli', 'vanilla', 'watermelon', 'xigua',
@@ -37,10 +37,12 @@ const RecoveryPhrase = () => {
                         <option value={12} >12 Words</option>
                         <option value={24}>24 Words</option>
                     </select>
-                    <div className='ceeds-RecoveryPhrase' >
-                        {walletCeeds.slice(0, wordCount).map((word, index) => <span key={index} >{index + 1}. {word}</span>)}
+                    <div className='ceed-RecoveryPhrase'>
+                        {walletCeeds.slice(0, wordCount).map((word, index) => (
+                            <span key={index}>{index + 1}. {word}</span>
+                        ))}
                     </div>
-                    <button className='copyCeeds-RecoveryPhrase' ><Image src={copyIcon} alt='' />Copy to clipboard</button>
+                    <button className='copyCeed-RecoveryPhrase' ><Image src={copyIcon} alt='' />Copy to clipboard</button>
                     <button className='cta-RecoveryPhrase' onClick={() => setStep(3)} >Continue</button>
                 </div>
             }
@@ -51,7 +53,7 @@ const RecoveryPhrase = () => {
                     <Image src={ceedRecoveryPhrase} alt='recovery-phrase' />
                     <h1>Confirm Recovery Phrase</h1>
                     <p>Enter the words in the correct order to verify your backup and ensure you’ve written it down correctly.</p>
-                    <div className='ceeds-RecoveryPhrase' >
+                    <div className='ceed-RecoveryPhrase' >
                         {walletCeeds.slice(0, wordCount).map((word, index) => <span key={index} >{index + 1}. {word}</span>)}
                     </div>
                     <button className='cta-RecoveryPhrase' onClick={() => navigate('/get-started?step=master-password')} >Continue</button>
