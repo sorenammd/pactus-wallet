@@ -3,12 +3,12 @@ import React, { Suspense } from 'react'
 import './style.css'
 import Header from '@/components/header'
 import Sidebar from '@/components/sidebar'
-import RefetchBalance from '@/components/refetch-balance';
+import RefetchBalance from '@/components/refetch';
 import Image from 'next/image';
 import { comingSoonChart, searchIcon, simpleLogo, transactions } from '@/assets';
-import SendPac from '@/components/send-pac';
-import ReceivePac from '@/components/receive-pac';
-import BridgePac from '@/components/bridge-pac';
+import SendPac from '@/components/send';
+import ReceivePac from '@/components/receive';
+import BridgePac from '@/components/bridge';
 import TransactionsHistory from '@/components/transactions-history';
 
 const Dashboard = () => {

@@ -7,9 +7,9 @@ import Header from '@/components/header';
 import Image from 'next/image';
 import TransactionsHistory from '@/components/transactions-history';
 import { searchIcon, simpleLogo, transactions } from '@/assets';
-import RefetchBalance from '@/components/refetch-balance';
-import SendPac from '@/components/send-pac';
-import BridgePac from '@/components/bridge-pac';
+import RefetchBalance from '@/components/refetch';
+import SendPac from '@/components/send';
+import BridgePac from '@/components/bridge';
 const Wallet = () => {
 
     return (
