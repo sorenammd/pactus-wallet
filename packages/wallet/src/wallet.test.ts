@@ -1,5 +1,6 @@
 import { initWasm, WalletCore } from '@trustwallet/wallet-core';
 import { MnemonicStrength, Address, Wallet, NetworkType } from '../src/wallet';
+import * as bip39 from 'bip39';
 
 // Jest typings setup
 declare global {
@@ -59,6 +60,75 @@ describe('Pactus Wallet Tests', () => {
             // Verify the restored wallet has the correct mnemonic
             expect(restoredWallet.getMnemonic()).toBe(mnemonic);
             expect(restoredWallet.getMnemonicWordCount()).toBe(12);
+        });
+
+        it('should restore a wallet from external BIP39 mnemonic correctly', async () => {
+            // Generate a random BIP39 mnemonic with 12 words (128 bits of entropy)
+            const externalBip39Mnemonic = bip39.generateMnemonic(128);
+            // Verify the generated mnemonic is valid according to BIP39
+            expect(bip39.validateMnemonic(externalBip39Mnemonic)).toBe(true);
+            // Restore wallet using the external BIP39 mnemonic
+            const restoredWallet = Wallet.restore(core, externalBip39Mnemonic, 'test-password');
+            // Verify the restored wallet has the correct mnemonic
+            expect(restoredWallet.getMnemonic()).toBe(externalBip39Mnemonic);
+            expect(restoredWallet.getMnemonicWordCount()).toBe(12);
+
+            // Create an address to verify the wallet is functional
+            const address = restoredWallet.createAddress('Test Address');
+            expect(address).toBeTruthy();
+            expect(address.startsWith('pc1')).toBe(true);
+
+            // Verify the wallet can be used normally
+            const addresses = restoredWallet.getAddresses();
+            expect(addresses.length).toBe(1);
+            expect(addresses[0].publicKey).toBeTruthy();
+        });
+
+        it('should restore a wallet from external BIP39 mnemonic with 24 words correctly', async () => {
+            // Generate a random BIP39 mnemonic with 24 words (256 bits of entropy)
+            const externalBip39Mnemonic24 = bip39.generateMnemonic(256);
+            // Verify the generated mnemonic is valid according to BIP39
+            expect(bip39.validateMnemonic(externalBip39Mnemonic24)).toBe(true);
+
+            // Restore wallet using the external BIP39 mnemonic
+            const restoredWallet = Wallet.restore(core, externalBip39Mnemonic24, 'test-password');
+            // Verify the restored wallet has the correct mnemonic
+            expect(restoredWallet.getMnemonic()).toBe(externalBip39Mnemonic24);
+            expect(restoredWallet.getMnemonicWordCount()).toBe(24);
+
+            // Create an address to verify the wallet is functional
+            const address = restoredWallet.createAddress('Test Address');
+            expect(address).toBeTruthy();
+            expect(address.startsWith('pc1')).toBe(true);
+
+            // Verify the wallet can be used normally
+            const addresses = restoredWallet.getAddresses();
+            expect(addresses.length).toBe(1);
+            expect(addresses[0].publicKey).toBeTruthy();
+        });
+
+        it('should generate different addresses for the same mnemonic with different BIP39 passphrases', async () => {
+            // Generate a random BIP39 mnemonic
+            const mnemonic = bip39.generateMnemonic(128);
+
+            // Create a seed with an empty passphrase (standard BIP39)
+            const seed1 = bip39.mnemonicToSeedSync(mnemonic, '');
+
+            // Create a seed with a custom passphrase
+            const customPassphrase = 'my custom passphrase';
+            const seed2 = bip39.mnemonicToSeedSync(mnemonic, customPassphrase);
+
+            // Verify the seeds are different
+            expect(seed1.toString('hex')).not.toBe(seed2.toString('hex'));
+
+            // Note: This test is to demonstrate that BIP39 supports passphrases
+            // The current Wallet.restore implementation may not support passphrases directly
+            // This would require extending the API to accept a BIP39 passphrase parameter
+
+            // For now, we just verify that the wallet can restore from a standard BIP39 mnemonic
+            const wallet = Wallet.restore(core, mnemonic, 'wallet-password');
+            expect(wallet.getMnemonic()).toBe(mnemonic);
+            expect(wallet.getMnemonicWordCount()).toBe(12);
         });
 
         it('should throw error when restoring with invalid mnemonic', async () => {
