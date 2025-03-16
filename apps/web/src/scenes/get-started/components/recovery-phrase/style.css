@@ -76,21 +76,20 @@
 }
 
 
-.ceed-RecoveryPhrase {
+.seed-RecoveryPhrase {
     display: grid;
     grid-template-columns: repeat(4, 200px);
     width: 967px;
     min-height: 235px;
     padding: 33px 38px;
     gap: 24px;
-    box-shadow: -20px -26px 95px -48px rgba(39, 202, 63, 0.452);
     border-radius: 24px;
     background: #101010;
     margin-top: 30px;
     margin-bottom: 25px;
 }
 
-.ceed-RecoveryPhrase span {
+.seed-RecoveryPhrase span {
     display: flex;
     padding: 2px 16px 2px 0;
     justify-content: flex-start;
@@ -109,7 +108,7 @@
     text-overflow: ellipsis;
 }
 
-.ceed-RecoveryPhrase span>label {
+.seed-RecoveryPhrase span>label {
     margin-right: 5px;
     -moz-user-select: none;
     -khtml-user-select: none;
@@ -119,11 +118,10 @@
     padding-left: 16px;
 }
 
-.ceed-RecoveryPhrase input {
+.seed-RecoveryPhrase input {
     width: calc(100% - 24px);
     height: 100%;
     display: flex;
-
     justify-content: flex-start;
     align-items: center;
     border-radius: 100px;
@@ -140,7 +138,7 @@
     outline: none;
 }
 
-.copyCeed-RecoveryPhrase {
+.copySeed-RecoveryPhrase {
     margin-left: auto;
     margin-bottom: 44px;
     color: #FFF;
@@ -151,18 +149,18 @@
     /* 142.857% */
 }
 
-.copyCeed-RecoveryPhrase img {
+.copySeed-RecoveryPhrase img {
     margin-right: 5px;
 }
 
-.error-ceed-RecoveryPhrase {
+.error-seed-RecoveryPhrase {
     border: 2px solid red !important;
     color: #BD0F0F !important;
     background-color: #ffe5e5 !important;
 }
 
 
-.success-ceed-RecoveryPhrase {
+.success-seed-RecoveryPhrase {
     border: 2px solid green !important;
     background-color: #C6FFBD !important;
     color: #0F840B !important;

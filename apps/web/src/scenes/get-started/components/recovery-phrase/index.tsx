@@ -1,20 +1,20 @@
-import { ceedRecoveryPhrase, copyIcon, recoveryPhrase } from '@/assets'
+import { copyIcon, generateRecoverySeedLottie, writePaperLottie } from '@/assets'
 import Image from 'next/image'
 import React, { useState, useEffect } from 'react'
 import './style.css'
 import { useRouter } from 'next/navigation'
 import * as bip39 from 'bip39';
-
+import dynamic from 'next/dynamic'
+import BorderBeam from '@/components/border-beam'
+const LottiePlayer = dynamic(() => import('react-lottie-player'), { ssr: false });
 const RecoveryPhrase = () => {
     const [step, setStep] = useState(1);
     const [wordCount, setWordCount] = useState(24);
-    const [walletCeeds, setWalletCeeds] = useState<string[]>([]);
+    const [walletSeeds, setWalletSeeds] = useState<string[]>([]);
     const [validationIndexes, setValidationIndexes] = useState<number[]>([]);
     const [userInputs, setUserInputs] = useState({});
     const [inputErrors, setInputErrors] = useState({});
-
     const navigate = useRouter().push;
-
     // Generate recovery phrase when the component loads or word count changes
     useEffect(() => {
         generateRecoveryPhrase(wordCount);
@@ -24,7 +24,7 @@ const RecoveryPhrase = () => {
     const generateRecoveryPhrase = async (count) => {
         const mnemonic = bip39.generateMnemonic((count === 12 ? 128 : 256));
         const words = mnemonic.split(' ');
-        setWalletCeeds(words);
+        setWalletSeeds(words);
 
         // Select 4 random indexes for validation
         const indexes: number[] = [];
@@ -46,7 +46,7 @@ const RecoveryPhrase = () => {
 
         // Validate input and apply color styles
         const errors = { ...inputErrors };
-        if (value.trim() !== walletCeeds[index]) {
+        if (value.trim() !== walletSeeds[index]) {
             errors[index] = 'error';  // Incorrect input
         } else {
             errors[index] = 'success';  // Correct input
@@ -60,7 +60,7 @@ const RecoveryPhrase = () => {
         const errors = {};
         let allInputsValid = true;
         validationIndexes.forEach((index) => {
-            if (userInputs[index]?.trim() !== walletCeeds[index]) {
+            if (userInputs[index]?.trim() !== walletSeeds[index]) {
                 errors[index] = 'error'; // Incorrect input
                 allInputsValid = false;
             }
@@ -96,7 +96,12 @@ const RecoveryPhrase = () => {
         <div className='container-RecoveryPhrase'>
             {step === 1 &&
                 <div className='hint-RecoveryPhrase'>
-                    <Image src={recoveryPhrase} alt='recovery-phrase' />
+                    <LottiePlayer
+                        animationData={writePaperLottie}
+                        loop={true}
+                        play
+                        style={{ height: '300px' }}
+                    />
                     <h1>Write Down Your Recovery Phrase</h1>
                     <p>Your recovery phrase is the only way to restore access to your wallet if you lose your device.
                         We strongly recommend writing it down on paper and keeping it in a safe place.</p>
@@ -106,19 +111,37 @@ const RecoveryPhrase = () => {
 
             {step === 2 &&
                 <div className='hint-RecoveryPhrase' style={{ gap: '10px' }}>
-                    <Image src={ceedRecoveryPhrase} alt='recovery-phrase' />
+                    <LottiePlayer
+                        animationData={generateRecoverySeedLottie}
+                        loop={false}
+                        play
+                        style={{ height: '200px' }}
+                    />
                     <h1>Recovery Phrase</h1>
                     <p>Write down the following {wordCount} words in the correct order and keep them in a safe place.</p>
                     <select defaultValue={24} onChange={(e) => setWordCount(parseInt(e.target.value))}>
                         <option value={12}>12 Words</option>
                         <option value={24}>24 Words</option>
                     </select>
-                    <div className='ceed-RecoveryPhrase'>
-                        {walletCeeds.map((word, index) => (
+                    <div id='recoveryPhraseStep2-parent' className='seed-RecoveryPhrase'>
+                        {walletSeeds.map((word, index) => (
                             <span key={index}><label> {index + 1}.</label> {word}</span>
                         ))}
+                        <BorderBeam
+                            duration={10}
+                            size={400}
+                            colorFrom='#064560'
+                            colorTo='#0FEF9E'
+                            boxShadow={{
+                                color: '#0FEF9E',
+                                blur: 95,
+                                spread: -60
+                            }}
+                            parentId="recoveryPhraseStep2-parent"
+
+                        />
                     </div>
-                    <button className='copyCeed-RecoveryPhrase' onClick={() => navigator.clipboard.writeText(walletCeeds.join(' '))}>
+                    <button className='copySeed-RecoveryPhrase' onClick={() => navigator.clipboard.writeText(walletSeeds.join(' '))}>
                         <Image src={copyIcon} alt='' /> Copy to clipboard
                     </button>
                     <button className='cta-RecoveryPhrase' onClick={() => setStep(3)}>Continue</button>
@@ -127,15 +150,20 @@ const RecoveryPhrase = () => {
 
             {step === 3 &&
                 <div className='hint-RecoveryPhrase' style={{ gap: '10px' }}>
-                    <Image src={ceedRecoveryPhrase} alt='recovery-phrase' />
+                    <LottiePlayer
+                        animationData={generateRecoverySeedLottie}
+                        loop={false}
+                        play
+                        style={{ height: '200px' }}
+                    />
                     <h1>Confirm Recovery Phrase</h1>
                     <p>Enter the missing words in the correct order to verify your backup.</p>
-                    <div className='ceed-RecoveryPhrase'>
-                        {walletCeeds.map((word, index) => (
+                    <div id="recoveryPhraseStep3-parent" className='seed-RecoveryPhrase'>
+                        {walletSeeds.map((word, index) => (
                             validationIndexes.includes(index) ? (
                                 <span
-                                    className={inputErrors[index] === 'error' ? 'error-ceed-RecoveryPhrase'
-                                        : inputErrors[index] === 'success' ? 'success-ceed-RecoveryPhrase' : ''}
+                                    className={inputErrors[index] === 'error' ? 'error-seed-RecoveryPhrase'
+                                        : inputErrors[index] === 'success' ? 'success-seed-RecoveryPhrase' : ''}
                                     style={{ padding: '0' }}
                                     key={index}>
                                     <label> {index + 1}.</label>
@@ -150,6 +178,19 @@ const RecoveryPhrase = () => {
                                 <span key={index}><label> {index + 1}.</label> {word}</span>
                             )
                         ))}
+                        <BorderBeam
+                            duration={10}
+                            size={400}
+                            colorFrom='#064560'
+                            colorTo='#0FEF9E'
+                            boxShadow={{
+                                color: '#0FEF9E',
+                                blur: 95,
+                                spread: -60
+                            }}
+                            parentId="recoveryPhraseStep3-parent"
+
+                        />
                     </div>
                     <button className='cta-RecoveryPhrase' onClick={validateInputs} disabled={isConfirmButtonDisabled()}>Confirm</button>
                 </div>
