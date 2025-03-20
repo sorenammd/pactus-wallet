@@ -291,20 +291,8 @@ export class Wallet {
      * @returns An emoji character
      */
     private generateEmojiFromUUID(uuid: string): string {
-        // List of emojis to choose from
-        const emojis = WALLET_EMOJIS;
-
-        // Hash the UUID to get a deterministic index into the emoji array
-        // Simple hash function: convert UUID to a number by summing char codes
-        let hash = 0;
-        for (let i = 0; i < uuid.length; i++) {
-            hash += uuid.charCodeAt(i);
-        }
-
-        // Get a deterministic index in the emoji array
-        const index = hash % emojis.length;
-
-        return emojis[index];
+        // Use the first character's code as index
+        return WALLET_EMOJIS[uuid.charCodeAt(0) % WALLET_EMOJIS.length];
     }
 
     /**
