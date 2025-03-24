@@ -5,14 +5,12 @@ import './style.css'
 import { useRouter } from 'next/navigation'
 import dynamic from 'next/dynamic'
 import { validatePassword } from '@/utils/password-validator'
-
-// Import the new validator function
+import { useWallet } from '@/wallet'
 
 const LottiePlayer = dynamic(() => import('react-lottie-player'), { ssr: false });
 
 const MasterPassword = () => {
     const navigate = useRouter().push;
-
     const [showPassword, setShowPassword] = useState<{ [key: string]: boolean }>({
         password: false,
         confirm: false
@@ -24,7 +22,7 @@ const MasterPassword = () => {
         password: '',
         confirm: ''
     });
-    const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+    const [isChecked, setIsChecked] = useState(false);
 
     const togglePasswordVisibility = (input: string) => {
         setShowPassword(prevState => ({
@@ -64,10 +62,7 @@ const MasterPassword = () => {
             }));
         }
     }
-
-    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setIsCheckboxChecked(e.target.checked);
-    }
+    const { setPassword: setMasterPassword } = useWallet();
 
     return (
         <div className='container-MasterPassword'>
@@ -115,8 +110,8 @@ const MasterPassword = () => {
             </div>
 
             <div className='terms-MasterPassword'>
-                <input type="checkbox" onChange={handleCheckboxChange} />
-                <p>
+                <input type="checkbox" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
+                <p onClick={() => setIsChecked(!isChecked)}>
                     I understand that Pactus cannot recover this password for me.
                     <span className='gradient-MasterPassword'>Learn more</span>
                 </p>
@@ -128,8 +123,8 @@ const MasterPassword = () => {
                     || errors.confirm.length > 1
                     || !password
                     || !confirmPassword
-                    || !isCheckboxChecked}
-                onClick={() => navigate('/get-started?step=choose-name-wallet')}
+                    || !isChecked}
+                onClick={() => { navigate('/get-started?step=choose-name-wallet'); setMasterPassword(password); }}
             >Continue
             </button>
         </div>
