@@ -42,6 +42,10 @@ jobs:
         run: yarn install
         working-directory: ./
 
+      - name: Install local package
+        run: yarn add file:../../packages/wallet
+        working-directory: ./apps/web
+
       - name: Build Next.js project
         run: yarn build
         working-directory: ./apps/web
