@@ -9,7 +9,6 @@ import Welcome from './components/welcome';
 
 
 import './style.css';
-import dynamic from 'next/dynamic';
 import ChooseNameWallet from './components/choose-name-wallet';
 const GetStartedContent = () => {
   const searchParams = useSearchParams();
