@@ -1,0 +1,34 @@
+name: Test
+
+on:
+    push:
+        branches: ['main']
+    pull_request:
+        branches: ['main']
+
+jobs:
+    test:
+        name: Run tests
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '22'
+                  cache: 'yarn'
+
+            - name: Install dependencies
+              run: yarn install --frozen-lockfile
+
+            - name: Build packages
+              run: yarn workspace @pactus-wallet/wallet build
+
+            - name: Test wallet package
+              run: yarn workspace @pactus-wallet/wallet test
+
+
+            # Add other workspace tests if needed

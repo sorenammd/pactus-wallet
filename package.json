@@ -4,6 +4,9 @@
     "repository": "https://github.com/pactus-project/pactus-wallet.git",
     "license": "MIT",
     "dependencies": {
+        "@trustwallet/wallet-core": "^4.2.17",
+        "argon2-browser": "^1.18.0",
+        "bip39": "^3.1.0",
         "turbo": "^2.4.1",
         "typescript": "^5.7.3"
     },
@@ -14,5 +17,23 @@
             "tests/*"
         ]
     },
-    "private": true
+    "private": true,
+    "packageManager": "yarn@4.4.1+sha224.fd21d9eb5fba020083811af1d4953acc21eeb9f6ff97efd1b3f9d4de",
+    "devDependencies": {
+        "@types/argon2-browser": "^1",
+        "@types/bip39": "^3.0.4",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-prettier": "^5.1.3",
+        "prettier": "^3.2.5"
+    },
+    "eslintConfig": {
+        "overrides": [
+            {
+                "files": [
+                    "packages/wallet/**/*"
+                ],
+                "extends": "./packages/wallet/.eslintrc.json"
+            }
+        ]
+    }
 }
