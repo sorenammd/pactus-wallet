@@ -38,26 +38,32 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Install dependencies
+      # Install dependencies for the wallet package
+      - name: Install dependencies for wallet
         run: yarn install
-        working-directory: ./
+        working-directory: ./packages/wallet
 
-      - name: Copy local package
-        run: cp -r packages/wallet apps/web/packages/wallet
-        working-directory: ./
+      # Build the wallet package
+      - name: Build wallet package
+        run: yarn build
+        working-directory: ./packages/wallet
 
-      - name: Install dependencies
+      # Link the built wallet package to the Next.js project
+      - name: Link wallet package to Next.js
+        run: yarn add file:../../packages/wallet
+        working-directory: ./apps/web
+
+      # Install dependencies for the Next.js project
+      - name: Install dependencies for Next.js
         run: yarn install
         working-directory: ./apps/web
 
-      - name: Install local package
-        run: yarn add file:./packages/wallet
-        working-directory: ./apps/web
-
+      # Build the Next.js project
       - name: Build Next.js project
         run: yarn build
         working-directory: ./apps/web
 
+      # Deploy the built project
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
