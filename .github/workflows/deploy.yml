@@ -55,7 +55,7 @@ jobs:
 
       # Link the wallet package to the Next.js project
       - name: Link wallet package to Next.js
-        run: yarn link wallet
+        run: yarn link @pactus-wallet/wallet
         working-directory: ./apps/web
 
       # Install dependencies for the Next.js project
