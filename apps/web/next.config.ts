@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
         if (!isServer) {
             config.plugins.push(
                 new CopyPlugin({
-                    patterns: [{ from: walletCoreWasmPath, to: 'static/chunks/app/' }]
+                    patterns: [{ from: walletCoreWasmPath, to: 'static/chunks/' }]
                 })
             );
             config.resolve.fallback = {
