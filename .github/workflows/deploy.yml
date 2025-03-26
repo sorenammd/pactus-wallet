@@ -48,9 +48,14 @@ jobs:
         run: yarn build
         working-directory: ./packages/wallet
 
-      # Link the built wallet package to the Next.js project
+      # Link the wallet package globally
+      - name: Link wallet package globally
+        run: yarn link
+        working-directory: ./packages/wallet
+
+      # Link the wallet package to the Next.js project
       - name: Link wallet package to Next.js
-        run: yarn add file:../../packages/wallet
+        run: yarn link wallet
         working-directory: ./apps/web
 
       # Install dependencies for the Next.js project

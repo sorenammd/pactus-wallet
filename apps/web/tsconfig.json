@@ -33,6 +33,5 @@
     "types",
     "./src/assets/custom.d.ts"
   ],
-  "exclude": ["node_modules"],
-  "references": [{ "path": "../../packages/wallet" }]
+  "exclude": ["node_modules"]
 }
