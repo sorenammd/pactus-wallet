@@ -43,7 +43,8 @@ jobs:
         working-directory: ./
 
       - name: Copy local package
-        run: cp -r ./packages/wallet ./apps/web/packages/wallet
+        run: cp -r packages/wallet apps/web/packages/wallet
+        working-directory: ./
 
       - name: Install dependencies
         run: yarn install
