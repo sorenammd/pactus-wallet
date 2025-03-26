@@ -38,30 +38,14 @@ jobs:
         with:
           node-version: "22"
 
-      # Install dependencies for the wallet package
-      - name: Install dependencies for wallet
+      # Install all dependencies using Yarn Workspaces
+      - name: Install dependencies
         run: yarn install
-        working-directory: ./packages/wallet
 
       # Build the wallet package
       - name: Build wallet package
         run: yarn build
         working-directory: ./packages/wallet
-
-      # Link the wallet package globally
-      - name: Link wallet package globally
-        run: yarn link
-        working-directory: ./packages/wallet
-
-      # Link the wallet package to the Next.js project
-      - name: Link wallet package to Next.js
-        run: yarn link @pactus-wallet/wallet
-        working-directory: ./apps/web
-
-      # Install dependencies for the Next.js project
-      - name: Install dependencies for Next.js
-        run: yarn install
-        working-directory: ./apps/web
 
       # Build the Next.js project
       - name: Build Next.js project
