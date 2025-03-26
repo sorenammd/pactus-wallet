@@ -20,8 +20,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@pactus-wallet/wallet": ["../../packages/wallet/src"]
+      "@/*": ["./src/*"]
   },
     "strictNullChecks": true
   },
