@@ -48,7 +48,6 @@ Clone the repository and install the dependencies:
 ```bash
 git clone https://github.com/pactus-project/pactus-wallet.git
 cd pactus-wallet
-
 yarn install
 ```
 
