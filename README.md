@@ -1,4 +1,4 @@
-# Pactus Wallet
+# Pactus Wallet 
 
 A modern, secure cryptocurrency wallet for the Pactus blockchain.
 
