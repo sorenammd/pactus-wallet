@@ -5,11 +5,16 @@ const walletCoreWasmPath = require.resolve('@trustwallet/wallet-core/dist/lib/wa
 
 const nextConfig: NextConfig = {
     output: 'export',
-    webpack: (config, { isServer }) => {
+    webpack: (config, { isServer, dev }) => {
         if (!isServer) {
             config.plugins.push(
                 new CopyPlugin({
-                    patterns: [{ from: walletCoreWasmPath, to: 'static/chunks/' }]
+                    patterns: [
+                        {
+                            from: walletCoreWasmPath,
+                            to: dev ? 'static/chunks/app/' : 'static/chunks/'
+                        }
+                    ]
                 })
             );
             config.resolve.fallback = {
