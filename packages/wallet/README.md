@@ -17,11 +17,9 @@ provides comprehensive wallet management capabilities.
 
 ## Installation
 
-Install the SDK using npm or yarn:
+Install the SDK using yarn:
 
 ```bash
-npm install @pactus/wallet-sdk
-# or
 yarn add @pactus/wallet-sdk
 ```
 
